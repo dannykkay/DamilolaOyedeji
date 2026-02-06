@@ -49,6 +49,8 @@
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -58,6 +60,9 @@ body {
     background: var(--gradient-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 /* ========================================
@@ -128,6 +133,7 @@ a:hover {
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    width: 100%;
 }
 
 .section-content {
@@ -260,6 +266,7 @@ a:hover {
     margin-top: 70px;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .hero-background {
@@ -278,6 +285,8 @@ a:hover {
     max-width: 900px;
     position: relative;
     z-index: 2;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
 .hero-image-wrapper {
@@ -1259,27 +1268,15 @@ a:hover {
 }
 
 /* ========================================
-   Floating Particles
+   Floating Particles - DISABLED
    ======================================== */
 
 .particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    z-index: 1;
+    display: none; /* Disabled to prevent horizontal scroll issues */
 }
 
 .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--color-accent);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: float 20s infinite;
+    display: none;
 }
 
 @keyframes float {
