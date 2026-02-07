@@ -51,6 +51,9 @@ html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
+    /* Mobile-specific fixes for horizontal jitter */
+    -webkit-overflow-scrolling: touch;
+    position: relative;
 }
 
 body {
@@ -63,6 +66,9 @@ body {
     overflow-x: hidden;
     width: 100%;
     position: relative;
+    /* Mobile-specific fixes for horizontal jitter */
+    min-width: 100%;
+    max-width: 100%;
 }
 
 /* ========================================
@@ -462,6 +468,9 @@ a:hover {
 
 .about {
     background: var(--color-white);
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 .about-grid {
@@ -594,6 +603,8 @@ a:hover {
 .works {
     background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #e3f2fd 100%);
     position: relative;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .works::before {
@@ -652,10 +663,11 @@ a:hover {
 
 .works-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
     gap: var(--spacing-md);
     max-width: var(--container-max);
     margin: 0 auto;
+    width: 100%;
 }
 
 .work-item {
@@ -805,14 +817,18 @@ a:hover {
 
 .publications {
     background: var(--color-background);
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 .publications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
     gap: var(--spacing-sm);
     max-width: 1000px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .publication-item {
@@ -931,6 +947,9 @@ a:hover {
 
 .contact {
     background: var(--gradient-primary);
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 .contact-grid {
@@ -1040,6 +1059,9 @@ a:hover {
     background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
     color: var(--color-white);
     padding: var(--spacing-lg) 0 var(--spacing-md);
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 .footer-content {
@@ -1417,6 +1439,35 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+    /* Prevent horizontal jitter on mobile */
+    html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    /* Ensure all sections stay within bounds */
+    .hero, .about, .works, .publications, .contact, .footer {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    /* Fix container width issues */
+    .container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Prevent any grid overflow */
+    .about-grid,
+    .works-grid,
+    .publications-grid,
+    .contact-grid,
+    .footer-content {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
     .nav-toggle {
         display: block;
     }
